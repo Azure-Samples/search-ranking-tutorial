@@ -1,53 +1,58 @@
 ---
 page_type: sample
 languages:
-- csharp
+- python
 products:
-- dotnet
-description: "Add 150 character max description"
-urlFragment: "update-this-to-unique-url-stub"
+- Azure Cognitive Search
+description: "This is a learning to rank tutorial in Python that showcases reranking on top of Azure Cognitive Search"
+urlFragment: "search-ranking-tutorial"
 ---
 
-# Official Microsoft Sample
+# Add machine learning to search relevance - Azure Cognitive Search
 
-<!-- 
-Guidelines on README format: https://review.docs.microsoft.com/help/onboard/admin/samples/concepts/readme-template?branch=master
+This tutorial demonstrates the adoption of [Learning To Rank](https://en.wikipedia.org/wiki/Learning_to_rank) to improve search relevance in search applications backed by Azure Cognitive Search. This tutorial highlights how to use the new [featuresMode parameter](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/search-documents#featuresmode) to train a ranking model.
 
-Guidance on onboarding samples to docs.microsoft.com/samples: https://review.docs.microsoft.com/help/onboard/admin/samples/process/onboarding?branch=master
+This tutorial is for developers who are looking to improve relevance in their Azure Cognitive Search applications. Azure Cognitive Search provides different ways to control search relevance including [scoring profiles](https://docs.microsoft.com/azure/search/index-add-scoring-profiles) and [query term boosting](https://docs.microsoft.com/azure/search/search-query-lucene-examples#example-5-term-boosting). These techniques work well in scenarios where indexed content and user query patterns are relatively static and well understood. In applications where this is not true, machine learning based techniques can be used to tune relevance dynamically.
 
-Taxonomies for products and languages: https://review.docs.microsoft.com/new-hope/information-architecture/metadata/taxonomies?branch=master
--->
+## Why machine learning for ranking?
 
-Give a short description for your sample here. What does it do and why is it important?
+Machine learned ranking models are highly effective, especially in applications that handle a lot of data and user traffic, such as Bing, Google, Facebook, Twitter, and Netflix. Ranking models are suitable for applications where a notion of what's relevant can be defined and observed. Machine learning based approaches to tune search relevance allow ever-changing information about user behavior and preferences to be injected into the search experience.
 
-## Contents
+Training and serving a ranking model involves lots of "gotchas". This tutorial describes a simple pattern for doing this with Azure Cognitive Search as the retrieval engine where reranking happens on the application side.
 
-Outline the file contents of the repository. It helps users navigate the codebase, build configuration and any related assets.
+## Getting Started
 
-| File/folder       | Description                                |
-|-------------------|--------------------------------------------|
-| `src`             | Sample source code.                        |
-| `.gitignore`      | Define what to ignore at commit time.      |
-| `CHANGELOG.md`    | List of changes to the sample.             |
-| `CONTRIBUTING.md` | Guidelines for contributing to the sample. |
-| `README.md`       | This README file.                          |
-| `LICENSE`         | The license for the sample.                |
-
-## Prerequisites
-
-Outline the required components and tools that a user might need to have on their machine in order to run the sample. This can be anything from frameworks, SDKs, OS versions or IDE releases.
+If you just want to read the code, skip the "Setup" section.
+- [Setup](#setup)
+- [Part 1: Data Engineering](l2r_part1_data_eng.ipynb)
+- [Part 2: Training and Testing a Ranking Model](l2r_part2_experiment.ipynb)
+- [Conclusion](conclusion.md)
 
 ## Setup
 
-Explain how to prepare the sample once the user clones or downloads the repository. The section should outline every step necessary to install dependencies and set up any settings (for example, API keys and output folders).
+### Prerequisites
+- An existing [Azure Cognitive Search](https://azure.microsoft.com/services/search/) service
+- [Anaconda](https://www.anaconda.com/distribution/#download-section) with Jupyter Notebooks and Python 3.7
 
-## Running the sample
+#### Optional
+- Prior background in machine learning is helpful. For a hands-on, introductory tutorial, check out [Machine learning crash course](https://docs.microsoft.com/learn/paths/ml-crash-course/). [Andrew Ng's Machine Learning course](https://www.coursera.org/learn/machine-learning) is also a great option if you have more time.
 
-Outline step-by-step instructions to execute the sample and see its output. Include steps for executing the sample from the IDE, starting specific services in the Azure portal or anything related to the overall launch of the code.
+### Installation
 
-## Key concepts
+1. Download and install the latest version of [Anaconda](https://www.anaconda.com/distribution/#download-section) or [Miniconda](https://docs.conda.io/en/latest/miniconda.html).
+2. Clone this repository to your local machine.
+    - On Windows, make sure to open this repo with an Anaconda command prompt.
+    - On Linux or OSX, if you didn't add Anaconda to your system `PATH` variable, you'll have to source the Anaconda environment manually.
+3. Install the conda environment with `conda env create -f environment.yml`.
+4. Activate the environment with `conda activate azs-l2r`.
+5. Run Jupyter with your choice of `jupyter notebook` or `jupyter lab`. Navigate to the tutorial at `l2r_part1_data_eng.ipynb` and `l2r_part2_experiment.ipynb`.
 
-Provide users with more context on the tools and services used in the sample. Explain some of the code that is being used and how services interact with each other.
+### One-Click Alternative
+
+- For a free, runnable link to the notebook, please click on the Binder button below.
+- Please note that MyBinder is a free public service with limited computational resources. Skip the K-Fold cross-validation section if you're running this on Binder.
+
+[![Binder](https://mybinder.org/badge_logo.svg)](https://aka.ms/AA8l0c7)
 
 ## Contributing
 
