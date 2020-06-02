@@ -1,0 +1,8 @@
+{
+    "service_name":"your_service_name",
+    "endpoint":"https://your_service_name.search.windows.net/",
+    "api_version":"2019-05-06-preview",
+    "api_key":"your_api_key",
+    "index_name":"azs-l2r-msftdocs"
+}
+
