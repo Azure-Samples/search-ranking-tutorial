@@ -47,13 +47,6 @@ If you just want to read the code, skip the "Setup" section.
 4. Activate the environment with `conda activate azs-l2r`.
 5. Run Jupyter with your choice of `jupyter notebook` or `jupyter lab`. Navigate to the tutorial at `l2r_part1_data_eng.ipynb` and `l2r_part2_experiment.ipynb`.
 
-### One-Click Alternative
-
-- For a free, runnable link to the notebook, please click on the Binder button below.
-- Please note that MyBinder is a free public service with limited computational resources. Skip the K-Fold cross-validation section if you're running this on Binder.
-
-[![Binder](https://mybinder.org/badge_logo.svg)](https://aka.ms/AA8l0c7)
-
 ## Contributing
 
 This project welcomes contributions and suggestions.  Most contributions require you to agree to a
